@@ -1,0 +1,165 @@
+body
+{
+    font-size: 10pt;
+}
+
+.OuterMost
+{
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+.InnerMost1
+{
+    float: left;
+    width: 26%;
+    height: 100%;
+    border: 1px solid black;
+}
+.InnerMost2
+{
+    float: left;
+    width: 73%;
+    height: 100%;
+}
+.Logo
+{
+    float: left;
+    width: 65%;
+    height: 10%;
+    margin-left: 2%;
+}
+.ShortGap10
+{
+    float: left;
+    width: 100%;
+    height: 5%;
+}
+.ShortGap
+{
+    float: left;
+    width: 100%;
+    height: 2%;
+}
+.Clear
+{
+    clear: both;
+}
+.ElementMostlabel
+{
+    float: left;
+    width: 20%;
+    height: auto;
+    margin-left: 2%;
+    text-align: right;
+}
+.ElementMostlabelR
+{
+    float: left;
+    width: 38%;
+    height: auto;
+}
+.ElementMostcontrol
+{
+    float: left;
+    width: auto;
+    height: auto;
+    margin-left: 1%;
+}
+.ElementMostbutton
+{
+    float: left;
+    width: auto;
+    height: auto;
+    margin-left: 21%;
+}
+.ElementMostlabelleft
+{
+    float: left;
+    width: 63%;
+    height: auto;
+    margin-left: 5%;
+    text-align: left;
+}
+.ElementDiv
+{
+    float: left;
+    width: auto;
+    height: auto;
+}
+.NotifyDiv
+{
+    float: left;
+    width: 100%;
+    height: auto;
+    margin-left: 3%;
+}
+.GridDiv
+{
+    float: left;
+    width: 100%;
+    height: auto;
+    align:center;
+    /*border: 1px solid black;*/
+}
+.labels
+{
+    color: red;
+    background-color: white;
+    font-family: "Lucida Grande" , "Arial" , sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    width: 50px;
+    border: 2px solid black;
+    white-space: nowrap;
+}
+
+.hr
+{
+    border-bottom: solid 1px black;
+    margin-left:2%;
+}
+
+.GridViewHeaderStyle
+{
+    background-color: #C0C0C0;
+    color: #000000;
+    text-align: Left;
+    font-weight: normal;
+    font-size: 8.5pt;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.GridViewItemStyle, .alternaterow1
+{
+    background-color: #F3F3F3;
+    text-align: left;
+}
+
+.GridViewAlternatingItem, .alternaterow2
+{
+    background-color: #D8D8D8;
+    text-align: left;
+}
+
+.GridViewSelectedRowStyle
+{
+    background-color: #FFD9E8;
+}
+
+.ElementDiv{float:left;width:18%;height:auto;margin-left:2%; text-align:right;}
+.ElementDiv1{float:left;width:35%;height:auto;margin-left:4%;}
+.ElementDiv2{float:left;width:auto;height:auto;margin-left:1%;}
+
+
+
+
+
+/* new design*/
+
+
+.OuterFloat{ float:left;width:100%;height:5%;}
+.FloatLeft{float:left;width:14%;height:5%; text-align:right; margin-left:2%;}
+.FLoatRight{float:left;width:6%;height:5%; text-align:left; margin-left:2%;}
+.FloatLeft1{float:left;width:60%;height:5%; text-align:left; margin-left:3%;}

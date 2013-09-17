@@ -1,0 +1,11 @@
+== Welcome to Rails with mongo id for mongo db
+
+git clone rails-mongoid
+
+bundle install
+
+configure config/mongoid.yml if dev environment good to go
+
+refer http://mongoid.org for more on mongoid 
+
+
