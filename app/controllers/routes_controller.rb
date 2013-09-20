@@ -3,10 +3,11 @@ class RoutesController < ApplicationController
   # GET /routes.json
   def index
     @routes = Route.all
-
+#Rails.logger.debug("results : #{images}")
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @routes }
+     #format.json { render json: @routes.as_json}
+     format.json { render "routes/index"}
     end
   end
 

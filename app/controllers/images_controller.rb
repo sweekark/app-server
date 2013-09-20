@@ -14,12 +14,16 @@ end
 
 	def show
 	@id = params[:id]
-@image = Image.find(@id)
+	@image = Image.find(@id)
+#Rails.logger.debug("results : #{@images}")
 	end
 
 	def create
-@image = Image.new(params[:image])
-	if @image.save
+    	#@route = Route.where(:_id => '52396d638f16021911000037').first
+    	@route = Route.where({}).first
+	@image = Image.new(params[:image])
+	@route.images = [@image]
+	if @route.save
 	redirect_to :action => :show, :id => @image.id
 	end
 	end

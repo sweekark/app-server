@@ -14,9 +14,12 @@
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
- <%= f.fields_for :from do |builder| %>
-    <%= render "from", :f => builder %>
-  <% end %>
+    <%= f.fields_for :from do |builder| %>
+    	<%= render "from", :f => builder %>
+    <% end %>
+    <%= f.fields_for :from do |builder| %>
+    	<%= render "image", :f => builder %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :to %><br />
