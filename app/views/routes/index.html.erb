@@ -11,7 +11,8 @@
 
 <% @routes.each do |route| %>
   <tr>
-    <td><%= route.from %></td>
+    <td><%= route.to %></td>
+    <td><%= route.from.name %></td>
     <td><%= route.to %></td>
     <td><%= link_to 'Show', route %></td>
     <td><%= link_to 'Edit', edit_route_path(route) %></td>

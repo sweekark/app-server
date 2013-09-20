@@ -1,0 +1,84 @@
+set up ruby with mongo
+
+create a app with sqllite
+rails _3.2.13_ new app -d sqlite3
+
+do bundle install
+
+test it fully
+rails g scaffold bookmark user_id:string url:string
+
+now run server rails s 
+and test for presence
+
+now replace with mongo 
+
+add gem mongo_mapper and bson_ext in Gemfile
+
+add file config/initializers/mongo.rb 
+
+MongoMapper.connection = Mongo::Connection.new('localhost', 27017)
+MongoMapper.database = "test"
+
+if defined?(PhusionPassenger)
+  PhusionPassenger.on_event(:starting_worker_process) do |forked|
+  MongoMapper.connection.connect if forked
+  end
+  end
+
+
+& file vi config/mongo.yml 
+defaults: &defaults
+  host: 127.0.0.1
+    port: 27017
+
+    development:
+      <<: *defaults
+        database: my_app_development
+
+        test:
+          <<: *defaults
+            database: my_app_test
+
+# set these environment variables on your prod server
+production:
+  <<: *defaults
+    database: my_app
+      username: <%= ENV['MONGO_USERNAME'] %>
+        password: <%= ENV['MONGO_PASSWORD'] %>
+~                                                                                                                                              
+~                                                                                                                                              
+~                                                                                                                                              
+~                                                                                                                                                                                                                                                                   
+remove the active record def from files
+
+vi config/application.rb 
+
+remove lines #require 'rails/all'
+
+require "action_controller/railtie"
+require "action_mailer/railtie"
+require "active_resource/railtie"
+require "rails/test_unit/railtie"
+ and add this
+
+
+vi config/environments/development.rb 
+
+
+
+
+be sure to use the latest version of monog mapper
+
+sweekar@sweekar-Lenovo-G460:~/rails-proj/test3$ rails console
+Loading development environment (Rails 3.2.13)
+irb(main):001:0> Bookmark.all
+=> [#<Bookmark _id: BSON::ObjectId('5198b6a746ff415f96000001'), url: "a">, #<Bookmark _id: BSON::ObjectId('5198b71446ff415f96000003'), url: "a">]
+irb(main):002:0> t = Bookmark.new(:url => "b")
+=> #<Bookmark _id: BSON::ObjectId('5198ba1446ff416362000003'), url: "b">
+irb(main):003:0> t.save
+[DEPRECATED] The 'safe' write concern option has been deprecated in favor of 'w'.
+=> true
+
+
+l

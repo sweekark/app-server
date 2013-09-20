@@ -1,5 +1,16 @@
 Mongo::Application.routes.draw do
 
+  get "images/index"
+
+  get "images/new"
+
+  get "images/show"
+
+resources :images
+
+  resources :routes
+
+
   resources :comments
 
 

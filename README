@@ -8,4 +8,7 @@ configure config/mongoid.yml if dev environment good to go
 
 refer http://mongoid.org for more on mongoid 
 
+****************
+Simple app on describing two models with reference
+
 
