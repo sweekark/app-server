@@ -1,6 +1,6 @@
 class User
   include Mongoid::Document
-  field :name, type: String
+  field :unique_key, type: String
   embeds_one :auth
   has_many :comments
 end

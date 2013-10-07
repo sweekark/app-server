@@ -13,11 +13,11 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
-    @comment = Comment.find(params[:id])
+    @comments = Comment.where(route_id: params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @comment }
+      format.json { "comments/show" }
     end
   end
 
@@ -42,10 +42,11 @@ class CommentsController < ApplicationController
   def create
     @user = User.where(:_id => params[:comment][:user_id]).first
     @comment = Comment.new(:content => params[:comment][:content])
-    @user.comments = [@comment]
-
+    @route = Route.where(:_id => params[:comment][:route_id]).first
+   @user.comments.push(@comment)
+   @route.comments.push(@comment)
     respond_to do |format|
-      if @user.save
+      if @user.save && @route.save
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
         format.json { render json: @comment, status: :created, location: @comment }
       else

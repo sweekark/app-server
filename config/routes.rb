@@ -1,5 +1,11 @@
 Mongo::Application.routes.draw do
 
+  resources :travel_times
+
+
+  resources :auths
+
+
   get "images/index"
 
   get "images/new"
@@ -8,7 +14,20 @@ Mongo::Application.routes.draw do
 
 resources :images
 
-  resources :routes
+=begin
+ resources :routes, :only => ["index"] do                           
+    collection do                                                      
+      post :connect                                                    
+      post :connected                                                  
+      post :apccept                                                    
+    end                                                                
+  end 
+=end
+
+   #match 'routes/:user_id/:page_no/:no_of_routes' => 'routes#index', :defaults => {:format => 'json'} 
+   match 'routes/:user_id' => 'routes#index', :defaults => {:format => 'json'}, :via => [:get]
+  resources :routes,
+    :defaults => { :format => 'json' }
 
 
   resources :comments

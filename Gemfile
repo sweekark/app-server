@@ -8,6 +8,7 @@ gem 'rails', '3.2.13'
 gem 'mongo_mapper'
 gem 'bson_ext'
 gem "mongoid", "~> 3.0.0"
+gem "rest-client"
 
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem 'aws-sdk', '~> 1.3.4'

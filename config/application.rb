@@ -13,6 +13,9 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Mongo
   class Application < Rails::Application
+# to define a constant use this
+	#config.TOUCH = "a";
+# not recomended contatns are defined in initializers/constants.rb
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -42,6 +45,9 @@ module Mongo
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
+
+config.no_of_routes_per_page = 3
     config.filter_parameters += [:password]
+###
   end
 end
