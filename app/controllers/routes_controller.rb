@@ -8,12 +8,17 @@
           @page_no = 1
           user_id = params[:user_id]
           Rails.logger.debug("results : #{user_id}")
-          Rails.logger.debug("results : #{Mongo::Application::TOUCH2}")
 	skip = (@page_no -1) * @no_of_routes_per_page		
-          @routes = Route.all().limit(@no_of_routes_per_page).skip(skip)
+         # @routes = TravelTimes.getRoutes()
+        # @routes = Route.all().limit(@no_of_routes_per_page).skip(skip)
+	#@routes = Route.find({"travel_time.data" : Date.today})
+	#@routes = Route.where({"travel_times.date" => Date.today})
+	@data = Route.getRoute
+	@routes = Route.all()
           respond_to do |format|
             format.html # index.html.erb
-            format.json { render "routes/index"}
+           format.json { render "routes/index"}
+            #format.json { render  json: @data }
           end
         end
 

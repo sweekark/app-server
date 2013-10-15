@@ -5,18 +5,14 @@ class Route
   embeds_one :to
   has_many :images
   has_many :comments
-def image_url
-	Rails.logger.debug("results : #{image.image.url}")
-	image.image.url
-   end
+  has_many :travel_times
 
-def as_json(options = nil)
-    super(
-	{ :include =>{ 
-	:images => {:methods => [:image_url]}
-	}
-}.merge(options || {}))
-  end
+def self.getRoute
+	Route.all().each do |r|
+	r.travel_times.where({"travel_times.date" => Date.today})
+	r.images.where({"images.date" => Date.today})
+	end
+end
 end
 
 class To

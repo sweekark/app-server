@@ -1,10 +1,6 @@
-collection @routes
-attributes :id, :name
-child(:from) { attributes :name }
-child :images do |image|
-  attributes :image_file_name
-  node :path do |u|
-    u.image.url
-  end
+collection @routes 
+attributes :_id, :name
+node :travel_times do |r| 
+#extends "routes/index2.rabl"
+ t =r.travel_times.where({"date" => Date.today} ) 
 end
-#node(:images) { |image| image.image_url?() }
