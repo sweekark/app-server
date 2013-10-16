@@ -16,9 +16,9 @@
 	@data = Route.getRoute
 	@routes = Route.all()
           respond_to do |format|
-            format.html # index.html.erb
-           format.json { render "routes/index"}
-            #format.json { render  json: @data }
+         #   format.html # index.html.erb
+          format.json { render "routes/index"}
+        #   format.json { render  json: @routes }
           end
         end
 

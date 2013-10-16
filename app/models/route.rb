@@ -1,8 +1,10 @@
 class Route
   include Mongoid::Document
   field :name, type: String
+  field :status, type: Boolean , default: ->{ true } 
+	default_scope where(status: true)
   embeds_one :from
-  embeds_one :to
+  embeds_many :to
   has_many :images
   has_many :comments
   has_many :travel_times
@@ -20,6 +22,7 @@ class To
   field :name, type: String
   field :display_name, type: String
   field :location, type: Array ,default: ->{ [11,12] }
+embedded_in :route
   index({ location: "2d" })
 
 end

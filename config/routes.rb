@@ -25,6 +25,7 @@ resources :images
 =end
 
    #match 'routes/:user_id/:page_no/:no_of_routes' => 'routes#index', :defaults => {:format => 'json'} 
+#resources:routes
    match 'routes/:user_id' => 'routes#index', :defaults => {:format => 'json'}, :via => [:get]
   resources :routes,
     :defaults => { :format => 'json' }
