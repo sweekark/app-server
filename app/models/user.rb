@@ -1,7 +1,8 @@
 class User
   include Mongoid::Document
-  field :unique_key, type: String
+  field :unique_android_key, type: String
   embeds_one :auth
+  embeds_many :follows
   has_many :comments
 end
 
@@ -11,3 +12,12 @@ class Auth
   field :type, type: String
   embedded_in :user
 end
+
+class Follow
+  include Mongoid::Document
+  field :route_id, type: String
+  embedded_in :user
+end
+
+
+

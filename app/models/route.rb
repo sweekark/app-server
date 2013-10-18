@@ -1,6 +1,7 @@
 class Route
   include Mongoid::Document
   field :name, type: String
+  field :priority, type: Integer
   field :status, type: Boolean , default: ->{ true } 
 	default_scope where(status: true)
   embeds_one :from
