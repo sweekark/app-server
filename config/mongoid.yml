@@ -83,7 +83,7 @@ production:
     default:
       database: app_production
       hosts:
-        - localhost:27017
+        - 54.251.169.128:27017
       options:
         consistency: :strong
         # In the test environment we lower the retries and retry interval to
