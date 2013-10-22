@@ -1,0 +1,6 @@
+development:
+  bucket: tromke
+  #access_key_id: ENV['S3_KEY']
+  access_key_id: AKIAI3KW2UDU37EDYPCQ
+  #secret_access_key: ENV['S3_SECRET']
+  secret_access_key: 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
