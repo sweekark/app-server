@@ -21,10 +21,11 @@ end
     def create
         #@route = Route.where(:_id => '52396d638f16021911000037').first
         @route = Route.where({}).first
-    @image = Image.new(params[:image])
-    @route.images = [@image]
+    #@image = Image.new(params[:image])
+@route.images.build(params[:image]) 
+   # @route.images = [@image]
     if @route.save
-    redirect_to :action => :show, :id => @image.id
+    #redirect_to :action => :show, :id => @image.id
     end
     end
     end

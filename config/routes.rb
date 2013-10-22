@@ -1,5 +1,8 @@
 Mongo::Application.routes.draw do
 
+  resources :discovers
+
+
   resources :activities,
 :defaults => { :format => 'json' }
 

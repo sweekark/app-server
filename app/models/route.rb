@@ -6,9 +6,14 @@ class Route
 	default_scope where(status: true)
   embeds_one :from
   embeds_many :to
-  has_many :images
   has_many :comments
   has_many :travel_times
+
+  attr_accessible :images
+  embeds_many :images, :cascade_callbacks => true
+  accepts_nested_attributes_for :images, :allow_destroy => true
+
+
 
 def self.getRoute
 	Route.all().each do |r|
