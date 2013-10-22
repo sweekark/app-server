@@ -2,11 +2,12 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
-
+    @comments = Comment.where(params[:criteria])
+	
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @comments }
+      #format.json { render json: @comments }
+      format.json { render "comments/index" }
     end
   end
 
@@ -40,15 +41,15 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @user = User.where(:_id => params[:comment][:user_id]).first
-    @comment = Comment.new(:content => params[:comment][:content])
-    @route = Route.where(:_id => params[:comment][:route_id]).first
+    @user = User.find(params[:user_id])
+    @route = Route.find(params[:route_id])
+    @comment = Comment.new({"activity" => params[:activity]})
    @user.comments.push(@comment)
    @route.comments.push(@comment)
     respond_to do |format|
-      if @user.save && @route.save
+      if @user.save 
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render json: @comment, status: :created, location: @comment }
+        format.json { render json: @comment, status: :created}
       else
         format.html { render action: "new" }
         format.json { render json: @comment.errors, status: :unprocessable_entity }

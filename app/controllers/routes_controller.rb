@@ -5,16 +5,11 @@
           # get all routes for a given user id.
           # should be implemented to get for various users.
           @no_of_routes_per_page = 2
-          @page_no = 1
+          @page_no = params[:page_no]
+	  @no_of_routes_per_page = params[:no_of_routes]	
           user_id = params[:user_id]
-          Rails.logger.debug("results : #{user_id}")
-	skip = (@page_no -1) * @no_of_routes_per_page		
-         # @routes = TravelTimes.getRoutes()
+	  skip = (@page_no -1) * @no_of_routes_per_page		
          @routes = Route.all().limit(@no_of_routes_per_page).skip(skip)
-	#@routes = Route.find({"travel_time.data" : Date.today})
-	#@routes = Route.where({"travel_times.date" => Date.today})
-	#@data = Route.getRoute
-	#@routes = Route.all()
           respond_to do |format|
          #   format.html # index.html.erb
           format.json { render "routes/index"}

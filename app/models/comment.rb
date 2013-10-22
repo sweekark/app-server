@@ -1,6 +1,6 @@
 class Comment
   include Mongoid::Document
-  field :content, type: String
+field :activity, type: Array
 	belongs_to :user
 	belongs_to :route
 end
