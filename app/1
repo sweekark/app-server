@@ -1,0 +1,58 @@
+diff --git a/app/controllers/routes_controller.rb b/app/controllers/routes_controller.rb
+index 0dfdc83..9b3ce3d 100644
+--- a/app/controllers/routes_controller.rb
++++ b/app/controllers/routes_controller.rb
+@@ -10,11 +10,11 @@
+           Rails.logger.debug("results : #{user_id}")
+ 	skip = (@page_no -1) * @no_of_routes_per_page		
+          # @routes = TravelTimes.getRoutes()
+-        # @routes = Route.all().limit(@no_of_routes_per_page).skip(skip)
++         @routes = Route.all().limit(@no_of_routes_per_page).skip(skip)
+ 	#@routes = Route.find({"travel_time.data" : Date.today})
+ 	#@routes = Route.where({"travel_times.date" => Date.today})
+-	@data = Route.getRoute
+-	@routes = Route.all()
++	#@data = Route.getRoute
++	#@routes = Route.all()
+           respond_to do |format|
+          #   format.html # index.html.erb
+           format.json { render "routes/index"}
+diff --git a/app/models/route.rb b/app/models/route.rb
+index 83cf8c5..da69521 100644
+--- a/app/models/route.rb
++++ b/app/models/route.rb
+@@ -1,6 +1,7 @@
+ class Route
+   include Mongoid::Document
+   field :name, type: String
++  field :priority, type: Integer
+   field :status, type: Boolean , default: ->{ true } 
+ 	default_scope where(status: true)
+   embeds_one :from
+diff --git a/app/models/user.rb b/app/models/user.rb
+index 52c9268..f38f8dd 100644
+--- a/app/models/user.rb
++++ b/app/models/user.rb
+@@ -1,7 +1,8 @@
+ class User
+   include Mongoid::Document
+-  field :unique_key, type: String
++  field :unique_android_key, type: String
+   embeds_one :auth
++  embeds_many :follows
+   has_many :comments
+ end
+ 
+@@ -11,3 +12,12 @@ class Auth
+   field :type, type: String
+   embedded_in :user
+ end
++
++class Follow
++  include Mongoid::Document
++  field :route_id, type: String
++  embedded_in :user
++end
++
++
++
