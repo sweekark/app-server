@@ -1,0 +1,5 @@
+<%= form_for(:image, :url => {:action => 'create'},     :html => {:multipart => true}) do |f| %>
+<%= f.file_field :image %>
+<%= f.text_field :title,placeholder: 'Ad title' %>
+<%= f.submit "Upload" %>
+<% end %>

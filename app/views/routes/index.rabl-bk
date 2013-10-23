@@ -1,0 +1,15 @@
+collection @routes 
+attributes :_id, :name
+child(:from) { attributes :name }
+child :images do |image|
+  attributes :image_file_name
+  node :path do |u|
+    u.image.url
+  end	
+end
+node route do 
+|r| r.where({"travel_times.date" => Date.today})
+end
+#child :travel_times do |travel|
+#attributes :date,:durations
+end
