@@ -1,6 +1,8 @@
 class Discover
   include Mongoid::Document
-  field :name, type: String
+  field :title, type: String
+  field :content, type: String
+belongs_to:route
 
   embeds_many :images, :cascade_callbacks => true
   attr_accessible :images

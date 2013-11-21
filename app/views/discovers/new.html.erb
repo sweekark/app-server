@@ -1,8 +1,9 @@
-<%= form_for(:image, :url => {:action => 'create'},     :html => {:multipart => true,:name => "touch"}) do |f| %>
-<%= f.file_field :image %>
+<%= form_for(:discover, :url => {:action => 'create'},     :html => {:multipart => true,:name => "touch"}) do |f| %>
 <%= f.text_field :title,placeholder: 'Ad title' %>
-<%= f.fields_for :questions do |builder| %>
-    <%= render "question", :f => builder %>
+<%= f.text_field :route_id,placeholder: 'route id from the db' %>
+<%= f.text_field :content,placeholder: 'Ad content' %>
+<%= f.fields_for :images do |builder| %>
+    <%= render "image", :f => builder %>
   <% end %>
 <%= f.submit "Upload" %>
 <% end %>

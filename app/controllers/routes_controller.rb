@@ -5,8 +5,13 @@
           # get all routes for a given user id.
           # should be implemented to get for various users.
           @no_of_routes_per_page = 2
+	@page_no = 1
+	 if params[:page_no] then 
           @page_no = params[:page_no]
+	end
+	if params[:no_of_routes] then
 	  @no_of_routes_per_page = params[:no_of_routes]	
+	end
           user_id = params[:user_id]
 	  skip = (@page_no -1) * @no_of_routes_per_page		
          @routes = Route.all().limit(@no_of_routes_per_page).skip(skip)
@@ -46,8 +51,9 @@
       # POST /routes
       # POST /routes.json
       def create
-        @route = Route.new(params[:route])
-        @route.from = From.new(params[:route][:from])
+        @route = Route.new()
+	@route.from = From.new(params[:route][:from])
+        #@route.from = From.new(params[:route][:from])
 
         respond_to do |format|
           if @route.save

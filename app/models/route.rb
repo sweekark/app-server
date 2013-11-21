@@ -3,15 +3,18 @@ class Route
   field :name, type: String
   field :priority, type: Integer
   field :status, type: Boolean , default: ->{ true } 
-	default_scope where(status: true)
+  default_scope where(status: true)
   embeds_one :from
   embeds_many :to
   has_many :comments
   has_many :travel_times
+  has_many :discovers
 
   attr_accessible :images
+  attr_accessible :from
   embeds_many :images, :cascade_callbacks => true
   accepts_nested_attributes_for :images, :allow_destroy => true
+  accepts_nested_attributes_for :from, :allow_destroy => true
 
 
 
@@ -40,4 +43,6 @@ class From
   field :location, type: Array ,default: ->{ [12.937070,77.626605] } 
 
   index({ location: "2d" })
+embedded_in :route
+
 end

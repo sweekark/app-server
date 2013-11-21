@@ -1,10 +1,1 @@
-<h1>New discover</h1>
-
-<%= form_for(:image, :url => {:action => 'create'},     :html => {:multipart => true}) do |f| %>
-
-<%= f.text_field :title,placeholder: 'Ad title' %>
 <%= f.file_field :image %>
-<%= f.submit "Upload" %>
-
-<% end %>
-<%= link_to 'Back', discovers_path %>

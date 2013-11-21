@@ -2,7 +2,7 @@ class DiscoversController < ApplicationController
   # GET /discovers
   # GET /discovers.json
   def index
-    @discovers = Discover.all
+    @discovers = Discover.where("route_id" => params[:route_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class DiscoversController < ApplicationController
   # GET /discovers/1
   # GET /discovers/1.json
   def show
-    @discover = Discover.find(params[:id])
+    @discover = Discover.where("route_id" => params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -40,9 +40,11 @@ class DiscoversController < ApplicationController
   # POST /discovers
   # POST /discovers.json
   def create
+    @route = Route.find(params[:discover][:route_id])
     @discover = Discover.new()
-
-@discover.images.build(params[:image]) 
+    @route.discovers.push(@discover)
+	#@route.discover.build()
+    @discover.images.build(params[:discover][:images]) 
     respond_to do |format|
       if @discover.save
         #format.html { redirect_to @discover, notice: 'Discover was successfully created.' }
