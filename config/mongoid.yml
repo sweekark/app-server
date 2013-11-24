@@ -81,7 +81,7 @@ test:
 production:
   sessions:
     default:
-      database: app_production
+      database: mongo_development
       hosts:
         - 54.251.169.128:27017
       options:
