@@ -1,5 +1,8 @@
 Mongo::Application.routes.draw do
 
+  resources :stickers
+
+
 #match 'discovers/:route_id' => 'discovers#index', :defaults => {:format => 'json'}, :via => [:get]
   resources :discovers,
 :defaults => { :format => 'json' }
