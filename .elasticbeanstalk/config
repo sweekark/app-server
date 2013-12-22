@@ -1,6 +1,5 @@
 [global]
-AwsCredentialFile=/home/sweekar/.elasticbeanstalk/aws_credential_file
 ApplicationName=renderer
-DevToolsEndpoint=git.elasticbeanstalk.us-east-1.amazonaws.com
+DevToolsEndpoint=git.elasticbeanstalk.ap-southeast-1.amazonaws.com
 EnvironmentName=renderer-env
-Region=us-east-1
+Region=ap-southeast-1

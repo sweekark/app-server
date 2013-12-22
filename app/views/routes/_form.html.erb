@@ -17,6 +17,10 @@
     <%= f.fields_for :froms do |builder| %>
     	<%= render "from", :f => builder %>
     <% end %>
+<%= f.fields_for :images do |builder| %>
+    	<%= render "image", :i => builder %>
+    <% end %>
+
   </div>
   <div class="actions">
     <%= f.submit %>

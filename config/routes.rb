@@ -1,5 +1,8 @@
 Mongo::Application.routes.draw do
 
+  resources :tests
+
+
   resources :stickers
 
 
